@@ -1,1 +1,130 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+img.grid-img {
+    width: 70px;
+}
+
+th.grid-th {
+    text-align: right;
+}
+
+td.grid-td {
+    text-align: right;
+}
+
+.divider {
+    width: 5px;
+    height: auto;
+    display: inline-block;
+}
+
+a.btn-small.delete-btn.waves-effect.waves-light {
+    background-color: #dc3545;
+}
+
+a.btn-small.edit-btn.waves-effect.waves-light {
+    background-color: #03a9f4;
+}
+
+h1.grid-page-title {
+    text-align: right;
+    border-bottom: 1px solid #9e9e9e;
+}
+
+.row .col {
+    float: right;
+}
+
+h1.form-page-title {
+    text-align: right;
+    font-size: 50px;
+}
+
+.input-form {
+    direction: rtl;
+}
+
+a.waves-effect.waves-light.btn-small.redirect-adding-btn {
+    color: #fff;
+    float: right;
+    margin: 10px 0px 0px 0px;
+}
+
+a.waves-effect.waves-light.btn-small.back-to-grid-btn {
+    background-color: #9e9e9e;
+}
+
+a.waves-effect.waves-light.btn-small.back-to-grid-btn {
+    background-color: #9e9e9e;
+    margin-right: 10px;
+}
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.input-field.col label {
+    left: 18.7rem;
+}
+
+.select-wrapper .caret {
+    left: 0 !important;
+}
+
+.select-wrapper input.select-dropdown {
+    text-align: right;
+}
+input,
+th,
+td,
+span {
+    text-align: right;
+}
+.buttons-form-section {
+    text-align: right;
+}
+
+#toast-container {
+    top: 40%;
+    right: 42%;
+    max-width: 86%;
+}
+
+.text-danger {
+    color: red;
+    padding-bottom: 10px;
+    direction: rtl;
+}
+
+h1.main-item-title {
+    direction: rtl;
+    text-align: right;
+}
+
+form {
+    text-align: right;
+}
+
+p {
+    direction: rtl;
+}
+
+a.waves-effect.waves-light.btn-small.edit-btn {
+    margin: 0px 0px 0px 10px;
+}
+
+table {
+    width: 100%;
+}
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+
+  button.delete-btn {
+    background-color: #dc4141;
+}

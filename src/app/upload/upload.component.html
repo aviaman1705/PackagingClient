@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col s3">
+      <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+      <button type="button" class="btn btn-success" (click)="file.click()">העלאת תמונה</button>
+    </div>
+    <div class="col s7">
+      <span class="upload" *ngIf="progress > 0">
+        {{progress}}%
+      </span>
+      <span class="upload" *ngIf="message">
+        {{message}}
+      </span>
+    </div>
+    <div class="col s2">
+      <img *ngIf="imgPriview ! null"  id="blah" class="form-img-preview" alt="your image" [src]="imgPriview">
+    </div>
+  </div>

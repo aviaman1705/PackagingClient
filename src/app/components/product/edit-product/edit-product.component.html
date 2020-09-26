@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col s5 offset-7">
+        <h1 class="form-page-title">עריכת מוצר</h1>
+        <form novalidate (ngSubmit)="onSubmit(editProductForm)" [formGroup]="editProductForm">
+
+            <input type="text" placeholder="שם מוצר" class="form-control input-form" formControlName="name">
+
+            <div *ngIf="editProductForm.get('name').hasError('required') && editProductForm.get('name').touched"
+                class="text-danger">
+                חובה להזין שם מוצר!
+            </div>
+
+            <div *ngIf="editProductForm.get('name').hasError('maxlength') && editProductForm.get('name').touched"
+                class="text-danger">
+                מקסימיום של 25 תווים
+            </div>
+
+            <input 
+            type="text" 
+            placeholder="מק''ט'"            
+            class="form-control input-form" formControlName="sku">
+
+            <div *ngIf="editProductForm.get('sku').hasError('required') && editProductForm.get('sku').touched" class="text-danger">
+                חובה להזין מק"ט!
+            </div>
+
+            <input 
+            type="number" 
+            placeholder="סדר הופעה"            
+            class="form-control input-form" formControlName="sorting">
+
+
+            <div *ngIf="editProductForm.get('sorting').hasError('required') && editProductForm.get('sorting').touched"
+                class="text-danger">
+                חובה להזין סדר הופעה!
+            </div>
+
+            <span class="text-danger"
+                *ngIf="editProductForm.get('sorting').hasError('nonPositive') && editProductForm.get('sorting').touched">
+                הזן ספרה הגדולה מ-0</span>
+
+            <app-upload (onUploadFinished)="uploadFinished($event)" [imgPriview]="setImage(image)"></app-upload>
+
+            <div class="buttons-form-section">
+                <a class="waves-effect waves-light btn-small back-to-grid-btn" routerLink="/products">חזרה לרשימה</a>
+                <button type="submit" class="waves-effect waves-light btn-small edit-btn"
+                    [disabled]="editProductForm.invalid">
+                    ערוך
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">טוען...</p>
+</ngx-spinner>

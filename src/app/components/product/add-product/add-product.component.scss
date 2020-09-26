@@ -1,0 +1,25 @@
+// input:invalid {
+//   border: 1px solid red;
+// }
+
+.text-danger {
+  color: red;
+  padding-bottom: 10px;
+}
+
+h1.main-item-title {
+  direction: rtl;
+  text-align: right;
+}
+
+form {
+  text-align: right;
+}
+
+p {
+  direction: rtl;
+}
+
+a.waves-effect.waves-light.btn-small.edit-btn {
+  margin: 0px 10px 0px 0px;
+}

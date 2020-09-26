@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col s5 offset-7">
+        <h1 class="form-page-title">עריכת מוצר</h1>      
+
+        <form novalidate (ngSubmit)="onSubmit(editInventoryBalanceForm)" [formGroup]="editInventoryBalanceForm">
+
+           <input 
+            type="text"
+            placeholder="שם מוצר" 
+            formControlName="name" 
+            class="form-control input-form"
+            disabled>
+
+            <input 
+            type="text" 
+            placeholder="הוראה"
+            formControlName="instruction"
+            class="form-control input-form">
+
+            <!-- error block -->
+            <div *ngIf="editInventoryBalanceForm.get('instruction').hasError('required') && editInventoryBalanceForm.get('instruction').touched" class="text-danger">
+                <sup>*</sup> חובה להזין הוראה!
+            </div>
+
+            <input 
+            type="number" 
+            placeholder="כמות"
+            formControlName="count"
+            class="form-control input-form">
+                      
+            <div *ngIf="editInventoryBalanceForm.get('count').hasError('required') && editInventoryBalanceForm.get('count').touched"
+                class="text-danger">
+                חובה להזין סדר הופעה!
+            </div>
+
+            <span class="text-danger"
+                *ngIf="editInventoryBalanceForm.get('count').hasError('nonPositive') && editInventoryBalanceForm.get('count').touched">
+                חובה לזין כמות הגדולה מ-0!</span>
+
+            <input 
+            type="text" 
+            placeholder="מיקום" 
+            formControlName="place"
+            class="form-control input-form" 
+            disabled>
+
+            <input 
+            type="text" 
+            placeholder="מחסן" 
+            formControlName="warhouse"
+            class="form-control input-form" 
+            disabled>
+
+            <div class="buttons-form-section">
+                <a class="waves-effect waves-light btn-small back-to-grid-btn" routerLink="/products">חזרה לרשימה</a>
+                <button type="submit" class="waves-effect waves-light btn-small edit-btn">
+                    ערוך
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
