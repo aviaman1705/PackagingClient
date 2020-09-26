@@ -8,7 +8,7 @@
       <a class="waves-effect waves-light btn-small redirect-adding-btn" [routerLink]="['/product']">הוספת מוצר</a>
    </div>
 
-   <div class="col s12">
+   <div class="col s12"  *ngIf="!isEmpty;else noItems">
       <mat-table #table [dataSource]="dataSource" matSort>
          <ng-container matColumnDef="sorting">
             <mat-header-cell *matHeaderCellDef mat-sort-header> סדר הופעה </mat-header-cell>
@@ -16,7 +16,8 @@
          </ng-container>
          <ng-container matColumnDef="image">
             <mat-header-cell *matHeaderCellDef mat-sort-header> תמונה </mat-header-cell>
-            <mat-cell *matCellDef="let element"> <img [src]="element.Image" /> </mat-cell>
+            <mat-cell *matCellDef="let element"> 
+               <img class="grid-img" [src]="setImage(element.Image)" /></mat-cell>
          </ng-container>
          <ng-container matColumnDef="sku">
             <mat-header-cell *matHeaderCellDef mat-sort-header> מק"ט </mat-header-cell>
@@ -51,6 +52,12 @@
          (page)="onPageSwitch.emit($event)">
       </mat-paginator>
    </div>
+
+   <ng-template #noItems>
+      <ul>
+         <li style="max-width:250px;margin:0 auto;">לא נמצאו פריטים. האם אתה בטוח שיש</li>
+      </ul>
+   </ng-template>
 </div>
 
       <!-- <table class="responsive-table">

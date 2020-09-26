@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { PaginationService } from 'src/app/services/pagination.service';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { CustomPaginator } from 'src/app/config/CustomPaginatorConfiguration';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-products',
@@ -20,35 +21,27 @@ export class ProductsComponent {
   @Input('dataSource')
 
   set allowDay(value: Product[]) {
+    if (value != undefined)
+      this.isEmpty = false;
+    else
+      this.isEmpty = true;
     this.dataSource = new MatTableDataSource<Product>(value);
   }
+
+  @Input() isEmpty: boolean;
   @Input() totalCount: number;
   @Output() onDeleteCustomer = new EventEmitter();
   @Output() onPageSwitch = new EventEmitter();
 
-  constructor(public paginationService: PaginationService) {}
+  constructor(public paginationService: PaginationService) { }
+
+  setImage(image) {
+    if (image == null)
+      return 'assets/img/photo_gallery.jpg'
+    else
+      return `${environment.rootUrl}${image}`;
+  }
 }
 
-  // productItems: Observable<Array<Product>>;
-  // loading$: Observable<Boolean>;
-  // error$: Observable<Error>
-  // newProductItem: Product = null;
 
-  // constructor(private store: Store<AppState>) { }
 
-  // ngOnInit() {
-  //   this.productItems = this.store.select(store => store.product.list);
-  //   this.loading$ = this.store.select(store => store.product.loading);
-  //   this.error$ = this.store.select(store => store.product.error);
-  //   this.store.dispatch(new LoadProductsAction());
-  // }
-
-  // deleteItem(id: number) { 
-  //   if (confirm(`בטוח שברצונך למחוק את פריט ${id} ?`)) {
-  //     this.store.dispatch(new DeleteIProductemAction(id));
-  //   }
-  // }
-
-  // setImage(image) {
-  //   return `${environment.rootUrl}${image}`;
-  // }
