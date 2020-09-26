@@ -34,10 +34,10 @@ import { ProductDataService } from './services/product-data.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ProductModule,
+    ProductModule, 
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(), // ToastrModule added,
+    ToastrModule.forRoot(), 
     MatAutocompleteModule,   
     AngularMaterialModule    
     // StoreModule.forRoot({
