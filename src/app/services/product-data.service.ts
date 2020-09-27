@@ -14,7 +14,7 @@ export class ProductDataService extends HttpBaseService {
 
         switch (method) {
             case 'DELETE': {
-                return super.delete(`${environment.apiUrl}products/Delete?productId=${product.ProductId}`);
+                return super.delete(`${environment.apiUrl}products/Delete?productId=${product.productId}`);
             }
             case 'POST': {
                 return super.add<Product>(product);

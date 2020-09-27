@@ -9,10 +9,10 @@
    </div>
 
    <div class="col s12"  *ngIf="!isEmpty;else noItems">
-      <mat-table #table [dataSource]="dataSource" matSort>
+      <mat-table #table [dataSource]="dataSource" matSort matSortStart="desc" (matSortChange)="onSortData.emit($event)">
          <ng-container matColumnDef="sorting">
             <mat-header-cell *matHeaderCellDef mat-sort-header> סדר הופעה </mat-header-cell>
-            <mat-cell *matCellDef="let element"> im {{element.Sorting}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.Sorting}} </mat-cell>
          </ng-container>
          <ng-container matColumnDef="image">
             <mat-header-cell *matHeaderCellDef mat-sort-header> תמונה </mat-header-cell>
@@ -27,7 +27,7 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header> שם </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.Name}} </mat-cell>
          </ng-container>
-         <ng-container matColumnDef="id">
+         <ng-container matColumnDef="productId">
             <mat-header-cell *matHeaderCellDef mat-sort-header> מזהה ייחודי </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.ProductId}} </mat-cell>
          </ng-container>
@@ -35,7 +35,7 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header> פעולות </mat-header-cell>
             <mat-cell *matCellDef="let element">
                <a mat-icon-button class="waves-effect waves-light btn-small edit-btn"
-                  [routerLink]="['/product', element.productId]">
+                  [routerLink]="['/product', element.ProductId]">
                   <mat-icon>עריכה</mat-icon>
                </a>
                <button mat-icon-button class="waves-effect waves-light btn-small delete-btn"
@@ -59,40 +59,3 @@
       </ul>
    </ng-template>
 </div>
-
-      <!-- <table class="responsive-table">
-         <thead>
-            <tr>
-               <th>פעולות</th>
-               <th>סדר הופעה</th>
-               <th>תמונה</th>
-               <th>מק"ט</th>
-               <th>שם</th>
-               <th>מזהה ייחודי</th>
-            </tr>
-         </thead>
-
-         <tbody *ngIf="(productItems | async); else noItems">
-            <tr *ngFor="let product of productItems | async">
-               <td>
-                  <a class="waves-effect waves-light btn-small delete-btn"
-                     (click)="removeProduct(product.productId)">מחיקה</a>
-                  <div class="divider"></div>
-                  <a class="waves-effect waves-light btn-small edit-btn"
-                     [routerLink]="['/product', product.productId]">עריכה</a>
-               </td>
-               <td> {{ product.sorting }}</td>
-               <td><img class="grid-img" [src]="setImage(product.image)" /> </td>
-               <td> {{ product.sku }}</td>
-               <td> {{ product.name }}</td>
-               <td> {{ product.productId }}</td>
-            </tr>
-         </tbody>
-
-         <ng-template #noItems>
-            <ul>
-               <li style="max-width:250px;margin:0 auto;">No items found. Are you sure there's <em>nothing</em> you
-                  want?</li>
-            </ul>
-         </ng-template>
-      </table> -->

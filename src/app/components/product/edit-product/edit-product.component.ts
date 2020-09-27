@@ -62,7 +62,7 @@ export class EditProductComponent implements OnInit {
             image: response.image
           });
 
-          this.productId = response.ProductId;
+          this.productId = response.productId;
         }
       )
     }

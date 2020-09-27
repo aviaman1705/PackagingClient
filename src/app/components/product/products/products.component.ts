@@ -16,7 +16,7 @@ import { environment } from 'src/environments/environment';
 export class ProductsComponent {
 
   dataSource = new MatTableDataSource<Product>();
-  displayedColumns = ['id', 'name', 'sku', 'image', 'sorting', 'actions'];
+  displayedColumns = ['productId', 'name', 'sku', 'image', 'sorting', 'actions'];
 
   @Input('dataSource')
 
@@ -32,6 +32,7 @@ export class ProductsComponent {
   @Input() totalCount: number;
   @Output() onDeleteCustomer = new EventEmitter();
   @Output() onPageSwitch = new EventEmitter();
+  @Output() onSortData = new EventEmitter();
 
   constructor(public paginationService: PaginationService) { }
 
