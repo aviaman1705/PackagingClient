@@ -43,7 +43,7 @@ export enum ProductActionTypes {
   export class AddProductItemSuccessAction implements Action {
     readonly type = ProductActionTypes.ADD_ITEM_SUCCESS
   
-    constructor(public payload: IProduct) { }
+    constructor(public payload: Product) { }
   }
   
   export class AddProductItemFailureAction implements Action {

@@ -61,7 +61,7 @@ export function ProductReducer(state: ProductState = initialState, action: Produ
     case ProductActionTypes.DELETE_ITEM_SUCCESS:
       return {
         ...state,
-        list: state.list.filter(item => item.ProductId !== action.payload),
+        list: state.list.filter(item => item.productId !== action.payload),
         loading: false
       }
     case ProductActionTypes.DELETE_ITEM_FAILURE:

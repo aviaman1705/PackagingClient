@@ -1,11 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { PaginationService } from './pagination.service';
 
 @Injectable()
 export class HttpBaseService {
   private headers = new HttpHeaders();
-  private endpoint = `'https://localhost:44340/api/products/`;
+  private endpoint = `${environment.apiUrl}products/`;
 
   constructor(
     private httpClient: HttpClient,
@@ -17,11 +18,7 @@ export class HttpBaseService {
 
   getAll<T>() {
     const mergedUrl =
-      `https://localhost:44340/api/products/` +
-      `?page=${this.paginationService.page}&pageCount=${
-        this.paginationService.pageCount
-      }`;
-
+      this.endpoint + `?page=${this.paginationService.page}&pageCount=${this.paginationService.pageCount}&orderBy=${this.paginationService.sorting}`;
     return this.httpClient.get<T>(mergedUrl, { observe: 'response' });
   }
 
@@ -34,7 +31,7 @@ export class HttpBaseService {
       headers: this.headers
     });
   }
- 
+
   update<T>(url: string, toUpdate: T) {
     return this.httpClient.put<T>(url, toUpdate, { headers: this.headers });
   }

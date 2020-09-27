@@ -3,4 +3,5 @@ export class PaginationModel {
     pageSize = this.selectItemsPerPage[0];
     pageIndex = 1;
     allItemsLength = 0;
+    sorting:string = 'sorting asc'
 }

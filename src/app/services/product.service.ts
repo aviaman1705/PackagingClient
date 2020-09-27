@@ -30,8 +30,8 @@ export class ProductService {
     return this.httpClient.post<Product>(`${environment.apiUrl}products/AddProduct`, newProduct);
   }
 
-  updatePtoduct(product: IProduct): Observable<Product> {
-    return this.httpClient.put<Product>(`${environment.apiUrl}products/UpdateProduct/`, product);
+  updatePtoduct(product: IProduct): Observable<Product> {    
+    return this.httpClient.put<Product>(`${environment.apiUrl}products/Update/`, product);
   }
 
   deleteProduct(productId: number): Observable<any> {

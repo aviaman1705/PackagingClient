@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { Sort } from '@angular/material/sort';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Product } from 'src/app/models/product.model';
 import { PaginationService } from 'src/app/services/pagination.service';
@@ -30,10 +31,15 @@ export class ProductOverviewComponent implements OnInit {
     this.getAllProducts();
   }
 
+  sortData(sort: Sort) {
+    this.paginationService.sort(sort);
+    this.getAllProducts();
+  }
+
   delete(product: Product) {
     this.productDataService.fireRequest(product, 'DELETE')
       .subscribe(() => {
-        this.dataSource = this.dataSource.filter(x => x.ProductId !== product.ProductId);
+        this.dataSource = this.dataSource.filter(x => x.ProductId !== product.productId);
       });
   }
 
@@ -48,6 +54,6 @@ export class ProductOverviewComponent implements OnInit {
           this.isEmpty = (this.dataSource.length == 0);
           this.spinner.hide();
         });
-    }, 3000);
+    }, 2000);
   }
 }

@@ -20,6 +20,7 @@ import { AngularMaterialModule } from './angular-material.module';
 import { DashboardOverviewComponent } from './components/dashboard-overview/dashboard-overview.component';
 import { PaginationService } from './services/pagination.service';
 import { ProductDataService } from './services/product-data.service';
+import { ProductService } from './services/product.service';
 
 
 @NgModule({
@@ -34,19 +35,19 @@ import { ProductDataService } from './services/product-data.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ProductModule, 
+    ProductModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(), 
-    MatAutocompleteModule,   
-    AngularMaterialModule    
-    // StoreModule.forRoot({
-    //   product: ProductReducer
-    // }),
-    // EffectsModule.forRoot([ProductEffects])
+    ToastrModule.forRoot(),
+    MatAutocompleteModule,
+    AngularMaterialModule,
+    StoreModule.forRoot({
+      product: ProductReducer
+    }),
+    EffectsModule.forRoot([ProductEffects])
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [PaginationService,ProductDataService],
+  providers: [PaginationService, ProductDataService,ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
